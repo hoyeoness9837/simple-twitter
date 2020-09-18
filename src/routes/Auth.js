@@ -1,5 +1,4 @@
 import { authService } from "fbase";
-import { auth } from "firebase";
 import React, { useState } from "react";
 
 const Auth = () => {
