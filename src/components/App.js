@@ -4,7 +4,7 @@ import { authService } from "fbase";
 
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoogedIn, setIsLoggedIn] = useState(authService.currentUser);
+  const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
   
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
@@ -19,7 +19,11 @@ function App() {
 
   return (
     <>
-      {init ? <AppRouter isLoogedIn={isLoogedIn} /> : "Fire Base is Initializing..."}
+      {init ? (
+        <AppRouter isLoggedIn={isLoggedIn} />
+      ) : (
+        "Fire Base is Initializing..."
+      )}
       <footer>footer</footer>
     </>
   );
