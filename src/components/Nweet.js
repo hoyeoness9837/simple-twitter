@@ -34,19 +34,23 @@ const Nweet = ({ nweetObj, isOwner }) => {
   return (
     <div>
       {editing ? ( //if user clicks edit button and toggle to editing state true, following will show up.
+    <>
+        {isOwner && ( //double-check if editing person is the owner.
         <>
-          <form onSubmit={onSubmit}>
-            <input
-              type="text"
-              placeholder="Edit your message"
-              value={newNweet}
-              onChange={onChange}
-              required
-            />
-            <input type="submit" value="Update"></input>
-          </form>
-          <button onClick={toggleEditing}>Cancel</button>
+            <form onSubmit={onSubmit}>
+                <input
+                    type="text"
+                    placeholder="Edit your message"
+                    value={newNweet}
+                    onChange={onChange}
+                    required
+                />
+                <input type="submit" value="Update"></input>
+            </form>
+            <button onClick={toggleEditing}>Cancel</button>
         </>
+        )}
+    </>
       ) : (
         <>
           <h4>{nweetObj.text}</h4>
