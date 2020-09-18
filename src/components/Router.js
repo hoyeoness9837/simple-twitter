@@ -5,6 +5,7 @@ import Home from "routes/Home.js";
 import Navigation from "components/Navigation";
 import Profile from "routes/Profile";
 
+//passing userObj properties from App.js where handling authstatus to Home page so that user can use userObj.id and userObj.uid
 const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
     <Router>
