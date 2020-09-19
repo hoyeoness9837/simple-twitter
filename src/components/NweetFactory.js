@@ -24,6 +24,7 @@ const NweetFactory = ({ userObj }) => {
     }
     const nweetFile = {
       text: nweet,
+      creatorName: userObj.displayName,
       creatorId: userObj.uid,
       createdAt: Date.now(),
       attachmentUrl,
@@ -73,8 +74,8 @@ const NweetFactory = ({ userObj }) => {
         />
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />
       </div>
-      <label for="attach-file" className="factoryInput__label">
-        <span>Add photos</span>
+      <label htmlFor="attach-file" className="factoryInput__label">
+        <span>Tweet with a photo</span>
         <FontAwesomeIcon icon={faPlus} />
       </label>
         <input
@@ -93,6 +94,7 @@ const NweetFactory = ({ userObj }) => {
           style={{
             backgroundImage: attachment,
           }}
+          alt="new attachment"
         />
         <div className="factoryForm__clear" onClick={onClearAttachment}>
           <span>Remove</span>

@@ -1,14 +1,10 @@
-import { authService, dbService } from "fbase";
+import Logout from "components/Logout";
+// import { authService, dbService } from "fbase";
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 
 const Profile = ({refreshUser, userObj}) => {
-  const history = useHistory();
-  const [newDisplayName, setNewDisplayName] = useState(userObj.displayName)
-  const onLogOutClick = () => {
-    authService.signOut();
-    history.push("/"); //after signout, redirect to root url(home)
-  };
+
+  const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
   
   // const getMyNweets = async() =>{
   //   //get this one more powerful using different args for where()
@@ -19,11 +15,15 @@ const Profile = ({refreshUser, userObj}) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if(userObj.displayName !== newDisplayName){
+    if (newDisplayName.length > 1 && userObj.displayName !== newDisplayName) {
       await userObj.updateProfile({
-        displayName:newDisplayName,
-      })
+        displayName: newDisplayName,
+      });
       refreshUser();
+    } else if(newDisplayName.length < 1) {
+      alert("New display name is too short.")
+    } else if(userObj.displayName === newDisplayName) {
+      alert("You can't change to the same display name.")
     }
   };
 
@@ -48,6 +48,9 @@ const Profile = ({refreshUser, userObj}) => {
           value={newDisplayName}
           type="text"
           placeholder="Display Name"
+          required
+          minLength="1"
+          maxLength="15"
         />
         <input
           type="submit"
@@ -58,9 +61,7 @@ const Profile = ({refreshUser, userObj}) => {
           }}
         />
       </form>
-      <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
-        Log Out
-      </span>
+      <Logout />
     </div>
   );
 };

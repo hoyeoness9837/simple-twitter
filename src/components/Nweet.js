@@ -1,7 +1,12 @@
 import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrash,
+  faPencilAlt,
+  faSearchPlus,
+} from "@fortawesome/free-solid-svg-icons";
+import Modal from "./Modal";
 
 const Nweet = ({ nweetObj, isOwner }) => {
   const [editing, setEditing] = useState(false); // default mode is false.
@@ -53,24 +58,30 @@ const Nweet = ({ nweetObj, isOwner }) => {
                 <input type="submit" value="Update Nweet" className="formBtn" />
               </form>
               <span onClick={toggleEditing} className="formBtn cancelBtn">
-            Cancel
-          </span>
+                Cancel
+              </span>
             </>
           )}
         </>
       ) : (
         <>
+          <h3>{nweetObj.creatorName}</h3>
           <h4>{nweetObj.text}</h4>
-          {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} alt="post_image" />}
+          {nweetObj.attachmentUrl && (
+            <Modal>
+              <img src={nweetObj.attachmentUrl} alt="post_image" />
+              <FontAwesomeIcon icon={faSearchPlus} />
+            </Modal>
+          )}
           {isOwner && ( //only if user is the owner, they will see the buttons
-            <div class="nweet__actions">
-            <span onClick={onDeleteClick}>
-              <FontAwesomeIcon icon={faTrash} />
-            </span>
-            <span onClick={toggleEditing}>
-              <FontAwesomeIcon icon={faPencilAlt} />
-            </span>
-          </div>
+            <div className="nweet__actions">
+              <span onClick={onDeleteClick}>
+                <FontAwesomeIcon icon={faTrash} />
+              </span>
+              <span onClick={toggleEditing}>
+                <FontAwesomeIcon icon={faPencilAlt} />
+              </span>
+            </div>
           )}
         </>
       )}
