@@ -4,9 +4,11 @@
 
 ## Technologies Included
 
-- Firebase Authentication
 - HTML, CSS, JavaScript
+- Firebase
 - React
+- FontAwesome
+- uuid
 
 
 ## Installation
@@ -23,4 +25,4 @@
 
 ## Deployed URL
 
-<!-- - [https://hw-googlebookapp.herokuapp.com/](https://hw-googlebookapp.herokuapp.com/) -->
+- [https://hoyeoness9837.github.io/simple-twitter/](https://hoyeoness9837.github.io/simple-twitter/)

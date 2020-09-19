@@ -9,10 +9,16 @@ const Home = ({ userObj }) => {
 
   useEffect(() => {
     //onSnapshot is a listener, available to realtime.
-    dbService.collection("nweets").onSnapshot((snapshot) =>  {
-      const nweetArray = snapshot.docs.map(doc =>({id:doc.id, ...doc.data(),}))
-      setNweets(nweetArray)
-    });
+    dbService
+      .collection("nweets")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const nweetArray = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setNweets(nweetArray);
+      });
   }, []);
 
   return (
