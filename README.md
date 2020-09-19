@@ -17,7 +17,7 @@
 
 ## DEMO
 
-<!-- -![DEMO](./client/public/assets/demo.gif) -->
+<iframe src="https://drive.google.com/file/d/1j0Zft1MVdYw9I7LZYgH4MVeDjrYIGd0h/preview" width="640" height="480"></iframe>
 
 ## Github Repo
 
