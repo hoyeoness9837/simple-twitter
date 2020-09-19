@@ -1,4 +1,4 @@
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
 
 const Nweet = ({ nweetObj, isOwner }) => {
@@ -8,7 +8,10 @@ const Nweet = ({ nweetObj, isOwner }) => {
   const onDeleteClick = async () => {
     const ok = window.confirm("Do you want to delete this message?");
     if (ok) {
+        //drop the document from firestore collection
       await dbService.doc(`nweets/${nweetObj.id}`).delete();
+        //drop file from firebase storage
+      await storageService.refFromURL(nweetObj.attachmentUrl).delete();
     }
   };
 
@@ -34,26 +37,27 @@ const Nweet = ({ nweetObj, isOwner }) => {
   return (
     <div>
       {editing ? ( //if user clicks edit button and toggle to editing state true, following will show up.
-    <>
-        {isOwner && ( //double-check if editing person is the owner.
         <>
-            <form onSubmit={onSubmit}>
+          {isOwner && ( //double-check if editing person is the owner.
+            <>
+              <form onSubmit={onSubmit}>
                 <input
-                    type="text"
-                    placeholder="Edit your message"
-                    value={newNweet}
-                    onChange={onChange}
-                    required
+                  type="text"
+                  placeholder="Edit your message"
+                  value={newNweet}
+                  onChange={onChange}
+                  required
                 />
                 <input type="submit" value="Update"></input>
-            </form>
-            <button onClick={toggleEditing}>Cancel</button>
+              </form>
+              <button onClick={toggleEditing}>Cancel</button>
+            </>
+          )}
         </>
-        )}
-    </>
       ) : (
         <>
           <h4>{nweetObj.text}</h4>
+          {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />}
           {isOwner && ( //only if user is the owner, they will see the buttons
             <>
               <button onClick={onDeleteClick}>Delete</button>

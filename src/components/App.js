@@ -22,7 +22,7 @@ function App() {
       ) : (
         "Fire Base is Initializing..."
       )}
-      <footer>footer</footer>
+      {/* <footer>footer</footer> */}
     </>
   );
 }
