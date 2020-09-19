@@ -2,6 +2,10 @@
 
 - React.js Application Cloning Twitter with Simple CRUD via FirseBase.
 
+## Deployed URL
+
+- [https://hoyeoness9837.github.io/simple-twitter/](https://hoyeoness9837.github.io/simple-twitter/)
+
 ## Technologies Included
 
 - HTML, CSS, JavaScript
@@ -23,6 +27,3 @@
 
 - [https://github.com/hoyeoness9837/simple-twitter](https://github.com/hoyeoness9837/simple-twitter)
 
-## Deployed URL
-
-- [https://hoyeoness9837.github.io/simple-twitter/](https://hoyeoness9837.github.io/simple-twitter/)
