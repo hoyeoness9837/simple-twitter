@@ -57,7 +57,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
       ) : (
         <>
           <h4>{nweetObj.text}</h4>
-          {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />}
+          {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} alt="post_image" />}
           {isOwner && ( //only if user is the owner, they will see the buttons
             <>
               <button onClick={onDeleteClick}>Delete</button>

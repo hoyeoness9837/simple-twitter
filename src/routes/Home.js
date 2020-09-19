@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 const Home = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
   const [nweets, setNweets] = useState([]);
-  const [attachment, setAttachment] = useState();
+  const [attachment, setAttachment] = useState("");
 
   useEffect(() => {
     //onSnapshot is a listener, available to realtime.
@@ -15,7 +15,7 @@ const Home = ({ userObj }) => {
       setNweets(nweetArray)
     });
   }, []);
-  
+
   const onSubmit = async (event) => {
     event.preventDefault();
     let attachmentUrl = "";
